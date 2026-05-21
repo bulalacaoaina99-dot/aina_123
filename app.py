@@ -59,112 +59,117 @@ CLASS_NAMES = list(model.names.values())
 
 st.markdown("""
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
 
 html, body, [class*="css"] {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 
+/* Deep Premium Midnight Background */
 .stApp {
-    background: linear-gradient(135deg, #0f172a, #111827, #1e293b);
-    color: #f8fafc;
+    background: radial-gradient(circle at top center, #1e1b4b 0%, #0f111a 70%, #07080d 100%);
+    color: #f1f5f9;
 }
 
+/* Clean Professional Title */
 .title {
     text-align: center;
-    font-size: clamp(35px, 5vw, 60px);
-    font-weight: 900;
-    color: #38bdf8;
-    text-shadow: 0px 0px 20px rgba(56,189,248,0.7);
-    margin-bottom: 5px;
+    font-size: clamp(32px, 4.5vw, 52px);
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    background: linear-gradient(135deg, #a5b4fc, #6366f1, #e0a7ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 2px;
 }
 
 .subtitle {
     text-align: center;
-    color: #cbd5e1;
-    font-size: 18px;
-    margin-bottom: 30px;
+    color: #94a3b8;
+    font-size: 16px;
+    letter-spacing: 0.02em;
+    font-weight: 400;
+    margin-bottom: 40px;
 }
 
+/* Sleek Glassmorphism Container */
 .panel {
-    background: rgba(15, 23, 42, 0.85);
-    border: 1px solid rgba(56,189,248,0.3);
-    padding: 25px;
-    border-radius: 20px;
-    box-shadow: 0 0 25px rgba(56,189,248,0.15);
-    backdrop-filter: blur(12px);
+    background: rgba(15, 17, 26, 0.7);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    padding: 30px;
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
 }
 
+/* Premium Button Styling */
 .stButton > button {
-    background: linear-gradient(135deg, #0ea5e9, #2563eb);
-    color: white;
-    border: none;
-    border-radius: 14px;
-    padding: 12px 24px;
-    font-weight: 700;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 15px rgba(14,165,233,0.35);
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 10px 24px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
 }
 
 .stButton > button:hover {
-    transform: scale(1.05);
-    background: linear-gradient(135deg, #0284c7, #1d4ed8);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.5);
+    background: linear-gradient(135deg, #4f46e5, #4338ca);
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
+/* Download Button Styling */
 .stDownloadButton > button {
-    background: linear-gradient(135deg, #22c55e, #15803d) !important;
+    background: linear-gradient(135deg, #10b981, #059669) !important;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25) !important;
 }
 
 .stDownloadButton > button:hover {
-    background: linear-gradient(135deg, #16a34a, #166534) !important;
+    background: linear-gradient(135deg, #059669, #047857) !important;
+    box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4) !important;
 }
 
+/* Clean Sidebar */
 section[data-testid="stSidebar"] {
-    background: linear-gradient(180deg, #111827, #0f172a);
-    border-right: 1px solid rgba(56,189,248,0.2);
+    background: #090b11;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .stSlider label,
 .stSelectbox label,
 .stToggle label {
-    color: #e2e8f0 !important;
-    font-weight: 600;
+    color: #cbd5e1 !important;
+    font-weight: 500;
+    font-size: 14px;
 }
 
+/* Rounded Clean Image Borders */
 img {
-    border-radius: 18px;
-    border: 2px solid rgba(56,189,248,0.25);
-    box-shadow: 0 0 25px rgba(56,189,248,0.15);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
 .block-container {
-    padding-top: 2rem;
+    padding-top: 3rem;
 }
 
-#MainMenu {
+#MainMenu, footer, header {
     visibility: hidden;
 }
-
-footer {
-    visibility: hidden;
-}
-
-header {
-    visibility: hidden;
-}
-
 </style>
 """, unsafe_allow_html=True)
 
 st.markdown("""
 <div class="title">📹 Live Object Detection & Tracing</div>
-
-<div class="subtitle">
-Real-Time AI Detection using YOLOv8 + Streamlit
-</div>
+<div class="subtitle">Real-Time AI Detection using YOLOv8 + Streamlit</div>
 """, unsafe_allow_html=True)
 
 with st.sidebar:
-
     st.markdown("## ⚙️ Detection Settings")
 
     confidence = st.slider(
@@ -197,9 +202,7 @@ class VideoProcessor(VideoProcessorBase):
         self.alert_sent = False
 
     def recv(self, frame):
-
         img = frame.to_ndarray(format="bgr24")
-
         img = cv2.flip(img, 1)
 
         results = model.predict(
@@ -210,41 +213,34 @@ class VideoProcessor(VideoProcessorBase):
         )
 
         detected_counts = {}
-
         current_objects = set()
-
         alert_detected = False
 
         if results and results[0].boxes is not None:
-
             for box in results[0].boxes:
-
                 x1, y1, x2, y2 = map(int, box.xyxy[0])
-
                 cls_id = int(box.cls[0])
-
                 label = model.names.get(cls_id, "unknown")
 
                 detected_counts[label] = detected_counts.get(label, 0) + 1
-
                 current_objects.add(label)
 
                 if label == target_object:
                     alert_detected = True
 
                 if show_boxes:
-
-                    color = (56, 189, 248)
+                    # Match the Indigo design palette for bounding boxes
+                    color = (241, 102, 99) # BGR value for sleek indigo hue
 
                     if label == target_object:
-                        color = (0, 0, 255)
+                        color = (0, 0, 255) # Red alert remains red
 
                     cv2.rectangle(
                         img,
                         (x1, y1),
                         (x2, y2),
                         color,
-                        3
+                        2 # Sleeker line thickness
                     )
 
                     cv2.putText(
@@ -252,7 +248,7 @@ class VideoProcessor(VideoProcessorBase):
                         f"{label}",
                         (x1, y1 - 10),
                         cv2.FONT_HERSHEY_SIMPLEX,
-                        0.8,
+                        0.6,
                         (255, 255, 255),
                         2
                     )
@@ -260,18 +256,14 @@ class VideoProcessor(VideoProcessorBase):
         # =========================
         # SEND TWILIO SMS ALERT
         # =========================
-
         if alert_detected and not self.alert_sent:
-
             try:
                 twilio_client.messages.create(
                     body=f"🚨 ALERT: {target_object.upper()} detected by YOLOv8 system.",
                     from_=TWILIO_PHONE_NUMBER,
                     to=ALERT_PHONE_NUMBER
                 )
-
                 print("SMS Alert Sent!")
-
             except Exception as e:
                 print("Twilio Error:", e)
 
@@ -281,22 +273,21 @@ class VideoProcessor(VideoProcessorBase):
             self.alert_sent = False
 
         total_objects = sum(detected_counts.values())
-
         overlay = img.copy()
 
         cv2.rectangle(
             overlay,
             (10, 10),
             (350, 140),
-            (15, 23, 42),
+            (15, 17, 26),
             -1
         )
 
         cv2.addWeighted(
             overlay,
-            0.7,
+            0.85,
             img,
-            0.3,
+            0.15,
             0,
             img
         )
@@ -306,31 +297,26 @@ class VideoProcessor(VideoProcessorBase):
             f"Total Objects: {total_objects}",
             (25, 45),
             cv2.FONT_HERSHEY_SIMPLEX,
-            0.9,
-            (56, 189, 248),
+            0.8,
+            (241, 102, 99),
             2
         )
 
         y_position = 80
-
         for obj, count in detected_counts.items():
-
             cv2.putText(
                 img,
                 f"{obj}: {count}",
                 (25, y_position),
                 cv2.FONT_HERSHEY_SIMPLEX,
-                0.7,
+                0.6,
                 (255, 255, 255),
                 2
             )
-
             y_position += 30
 
         if alert_detected:
-
             alert_text = f"ALERT: {target_object.upper()} DETECTED"
-
             (text_width, text_height), _ = cv2.getTextSize(
                 alert_text,
                 cv2.FONT_HERSHEY_SIMPLEX,
@@ -355,28 +341,15 @@ class VideoProcessor(VideoProcessorBase):
                 (255, 255, 255),
                 2
             )
-
             print("\a")
 
         if save_images and current_objects != self.prev_objects:
-
-            filename = datetime.now().strftime(
-                "%Y%m%d_%H%M%S.jpg"
-            )
-
-            filepath = os.path.join(
-                SAVE_DIR,
-                filename
-            )
-
+            filename = datetime.now().strftime("%Y%m%d_%H%M%S.jpg")
+            filepath = os.path.join(SAVE_DIR, filename)
             cv2.imwrite(filepath, img)
-
             self.prev_objects = current_objects
 
-        return av.VideoFrame.from_ndarray(
-            img,
-            format="bgr24"
-        )
+        return av.VideoFrame.from_ndarray(img, format="bgr24")
 
 st.markdown('<div class="panel">', unsafe_allow_html=True)
 
@@ -398,35 +371,21 @@ st.markdown("## 📂 Detection Gallery")
 image_files = glob.glob(os.path.join(SAVE_DIR, "*.jpg"))
 
 if image_files:
-
     cols = st.columns(3)
-
     for index, img_path in enumerate(reversed(image_files[-9:])):
-
         with cols[index % 3]:
-
             st.image(
                 img_path,
                 use_container_width=True
             )
-
             st.caption(
                 os.path.basename(img_path)
             )
 
     zip_buffer = io.BytesIO()
-
-    with zipfile.ZipFile(
-        zip_buffer,
-        "w"
-    ) as zip_file:
-
+    with zipfile.ZipFile(zip_buffer, "w") as zip_file:
         for file in image_files:
-
-            zip_file.write(
-                file,
-                os.path.basename(file)
-            )
+            zip_file.write(file, os.path.basename(file))
 
     st.download_button(
         label="⬇ Download Detection Logs",
@@ -434,6 +393,5 @@ if image_files:
         file_name="detection_logs.zip",
         mime="application/zip"
     )
-
 else:
     st.info("No saved detections yet.")
